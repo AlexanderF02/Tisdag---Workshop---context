@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { FaGithub, FaInstagram, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
 import PortfolioContext from '../contexts/PortfolioContext';
 
-export default function Home() {
+export default function Projects() {
   const [isFooterMenuOpen, setIsFooterMenuOpen] = useState(false);
-  const { projects, techSkills } = useContext(PortfolioContext);
+  const { projects } = useContext(PortfolioContext);
 
   const toggleFooterMenu = () => {
     setIsFooterMenuOpen(!isFooterMenuOpen);
@@ -14,31 +14,37 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
-        <div className="flex flex-col items-center justify-center flex-grow mt-8 space-y-8">
-          <div className="flex items-center space-x-12">
-            <div className="text-right">
-              <p className="text-2xl text-gray-600 dark:text-gray-300">Hi 👋,</p>
-              <p className="text-2xl text-gray-600 dark:text-gray-300">My name is</p>
-              <h1 className="text-6xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#E70FAA] to-[#13B0F5]">
-                Alexander Fällström
-              </h1>
-              <p className="text-2xl text-gray-600 dark:text-gray-300">I build things for the web</p>
+      <div className="flex flex-col min-h-screen">
+        <main className="container mx-auto px-6 py-8 flex-grow">
+          <section className="mb-12">
+            <h1 className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#E70FAA] to-[#13B0F5] mb-4 text-center md:text-left">Projects</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 text-center md:text-left">
+              Things I’ve built so far
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects.map((project, index) => (
+                <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                  <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4"><strong>Tech Used:</strong> {project.tech}</p>
+                  <div className="flex space-x-4">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline flex items-center">
+                      <FaGithub className="mr-2" /> View Code
+                    </a>
+                    {project.liveLink && (
+                      <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+                        Live Preview
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-[#E70FAA] to-[#13B0F5] p-1">
-              <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900">
-                <img
-                  src="/profilbild.jpg"
-                  alt="Profile"
-                  className="object-cover w-full h-full rounded-full"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+          </section>
+        </main>
         <div className="flex justify-end items-center w-full px-6 py-4">
           <div className="flex items-center space-x-6">
-            <p className="text-lg text-gray-900 dark:text-white">+46 79 377 45 02</p>
+            <p className="text-lg text-gray-900 dark:text-white">+46 79 337 45 02</p>
             <p className="text-lg text-gray-900 dark:text-white">alexander.fallstrom@chasacademy.se</p>
             <a href="https://github.com/AlexanderF02" target="_blank" rel="noopener noreferrer" className="text-2xl text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
               <FaGithub />
@@ -84,9 +90,3 @@ export default function Home() {
     </Layout>
   );
 }
-
-
-
-
-
-
