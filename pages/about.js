@@ -161,7 +161,7 @@ export default function About() {
           </nav>
           <p className="text-lg text-right">
             &copy; {new Date().getFullYear()} Designed and built by 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E70FAA] to-[#13B0F5]"> Pavan MG </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E70FAA] to-[#13B0F5]"> Alexander Fällström </span>
             with 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E70FAA] to-[#13B0F5]"> Love & Coffee</span>
           </p>

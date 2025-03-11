@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import Layout from '../components/Layout';
 import Link from 'next/link';
 import { FaGithub, FaInstagram, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
+import { IoLogoVercel } from 'react-icons/io5';
 import PortfolioContext from '../contexts/PortfolioContext';
 
 export default function Projects() {
@@ -31,9 +32,9 @@ export default function Projects() {
                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline flex items-center">
                       <FaGithub className="mr-2" /> View Code
                     </a>
-                    {project.liveLink && (
-                      <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
-                        Live Preview
+                    {project.vercelLink && (
+                      <a href={project.vercelLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline flex items-center">
+                        <IoLogoVercel className="mr-2" /> View on Vercel
                       </a>
                     )}
                   </div>
@@ -81,7 +82,7 @@ export default function Projects() {
           </nav>
           <p className="text-lg text-right">
             &copy; {new Date().getFullYear()} Designed and built by 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E70FAA] to-[#13B0F5]"> Pavan MG </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E70FAA] to-[#13B0F5]"> Alexander Fällström </span>
             with 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E70FAA] to-[#13B0F5]"> Love & Coffee</span>
           </p>

@@ -2,12 +2,13 @@ import { useState, useContext } from 'react';
 import PortfolioContext from '../contexts/PortfolioContext';
 import Layout from '../components/Layout';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { IoLogoVercel } from 'react-icons/io5';
 
 export default function Admin() {
   const { projects, setProjects, techSkills, setTechSkills } = useContext(PortfolioContext);
   const [loggedIn, setLoggedIn] = useState(false);
   const [credentials, setCredentials] = useState({ username: "", password: "" });
-  const [newProject, setNewProject] = useState({ title: "", description: "", tech: "", link: "" });
+  const [newProject, setNewProject] = useState({ title: "", description: "", tech: "", link: "", vercelLink: "" });
   const [newTechSkill, setNewTechSkill] = useState({ name: "", image: "" });
 
   const handleLogin = () => {
@@ -20,7 +21,7 @@ export default function Admin() {
 
   const addProject = () => {
     setProjects([...projects, newProject]);
-    setNewProject({ title: "", description: "", tech: "", link: "" });
+    setNewProject({ title: "", description: "", tech: "", link: "", vercelLink: "" });
   };
 
   const deleteProject = (index) => {
@@ -95,6 +96,13 @@ export default function Admin() {
             onChange={(e) => setNewProject({ ...newProject, link: e.target.value })}
             className="mb-4 p-2 border border-gray-300 rounded bg-white dark:bg-gray-800 text-black dark:text-white w-full"
           />
+          <input
+            type="text"
+            placeholder="Vercel Link"
+            value={newProject.vercelLink}
+            onChange={(e) => setNewProject({ ...newProject, vercelLink: e.target.value })}
+            className="mb-4 p-2 border border-gray-300 rounded bg-white dark:bg-gray-800 text-black dark:text-white w-full"
+          />
           <button onClick={addProject} className="p-2 bg-gradient-to-r from-[#E70FAA] to-[#13B0F5] text-white rounded">Add Project</button>
         </section>
 
@@ -109,6 +117,9 @@ export default function Admin() {
                 <div className="flex space-x-4">
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline flex items-center">
                     <FaGithub className="mr-2" /> View Code
+                  </a>
+                  <a href={project.vercelLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline flex items-center">
+                    <IoLogoVercel className="mr-2" /> View on Vercel
                   </a>
                 </div>
                 <button onClick={() => deleteProject(index)} className="mt-4 p-2 bg-gradient-to-r from-[#E70FAA] to-[#13B0F5] text-white rounded">Delete</button>
